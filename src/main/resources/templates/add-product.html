@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - ShopApp</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .form-section {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+        .form-section h1 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #a6a6a6;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff9900;
+            box-shadow: 0 0 4px rgba(255, 153, 0, 0.3);
+        }
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .btn-submit {
+            flex: 1;
+            background: #ffd814;
+            border: 1px solid #fcd200;
+            border-radius: 20px;
+            padding: 10px 14px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-submit:hover {
+            background: #f7ca00;
+        }
+        .btn-cancel {
+            flex: 1;
+            background: #e8e8e8;
+            border: 1px solid #d0d0d0;
+            border-radius: 20px;
+            padding: 10px 14px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #555;
+            text-decoration: none;
+            text-align: center;
+        }
+        .btn-cancel:hover {
+            background: #d8d8d8;
+        }
+        .error-message {
+            color: #b00020;
+            font-size: 13px;
+            margin-top: 6px;
+        }
+        .success-message {
+            background: #dff0d8;
+            border: 1px solid #c6e9b5;
+            color: #3d763d;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span class="brand">ShopApp</span>
+        <div>
+            <span sec:authentication="name" style="margin-right:14px; color:#ccc;"></span>
+            <a th:href="@{/products}">Products</a>
+            <a th:href="@{/cart}">Cart</a>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer; text-decoration:underline;">Log out</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="form-section">
+        <h1>Add New Product</h1>
+
+        <div th:if="${successMessage}" class="success-message" th:text="${successMessage}"></div>
+        <div th:if="${error}" class="error-message" style="background: #fadbd8; border: 1px solid #f5b7b1; color: #c0392b; padding: 12px; border-radius: 4px; margin-bottom: 18px;" th:text="${error}"></div>
+
+        <form th:action="@{/products/add}" method="post">
+            <div class="form-group">
+                <label for="name">Product Name *</label>
+                <input type="text" id="name" name="name" required autofocus
+                       th:value="${product?.name}" placeholder="Enter product name">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description"
+                          placeholder="Enter product description" th:text="${product?.description}"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price *</label>
+                <input type="number" id="price" name="price" step="0.01" required
+                       th:value="${product?.price}" placeholder="0.00">
+            </div>
+
+            <div class="form-group">
+                <label for="imageUrl">Image URL</label>
+                <input type="url" id="imageUrl" name="imageUrl"
+                       th:value="${product?.imageUrl}" placeholder="https://example.com/image.jpg">
+            </div>
+
+            <div class="form-group">
+                <label for="stock">Stock Quantity</label>
+                <input type="number" id="stock" name="stock" min="0"
+                       th:value="${product?.stock}" placeholder="0">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Add Product</button>
+                <a th:href="@{/products}" class="btn-cancel">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,17 @@
+com\example\shopapp\controller\ProductApiController$ProductRequest.class
+com\example\shopapp\controller\ProductApiController.class
+com\example\shopapp\config\SecurityConfig.class
+com\example\shopapp\controller\AuthController$SignupForm.class
+com\example\shopapp\controller\AuthController.class
+com\example\shopapp\entity\Product.class
+com\example\shopapp\entity\User.class
+com\example\shopapp\controller\ProductController.class
+com\example\shopapp\service\CartService.class
+com\example\shopapp\ShopAppApplication.class
+com\example\shopapp\controller\CartController.class
+com\example\shopapp\service\CustomUserDetailsService.class
+com\example\shopapp\repository\ProductRepository.class
+com\example\shopapp\repository\UserRepository.class
+com\example\shopapp\entity\CartItem.class
+com\example\shopapp\config\DataInitializer.class
+com\example\shopapp\repository\CartItemRepository.class

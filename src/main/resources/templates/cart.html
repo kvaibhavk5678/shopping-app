@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart - ShopApp</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav>
+        <span class="brand">ShopApp</span>
+        <div>
+            <a th:href="@{/products}">Continue shopping</a>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer; text-decoration:underline;">Log out</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Your Cart</h1>
+
+        <div th:if="${#lists.isEmpty(cartItems)}" class="empty">
+            Your cart is empty. <a th:href="@{/products}">Go shopping</a>.
+        </div>
+
+        <table class="cart-table" th:unless="${#lists.isEmpty(cartItems)}">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${cartItems}">
+                    <td th:text="${item.product.name}"></td>
+                    <td th:text="'$' + ${item.product.price}"></td>
+                    <td th:text="${item.quantity}"></td>
+                    <td th:text="'$' + ${item.product.price.multiply(new java.math.BigDecimal(item.quantity))}"></td>
+                    <td>
+                        <form th:action="@{'/cart/remove/' + ${item.id}}" method="post">
+                            <button class="remove-btn" type="submit">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="total-row" th:unless="${#lists.isEmpty(cartItems)}">
+            Total: $<span th:text="${total}"></span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop - ShopApp</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav>
+        <span class="brand">ShopApp</span>
+        <div>
+            <span sec:authentication="name" style="margin-right:14px; color:#ccc;"></span>
+            <a th:href="@{/cart}">Cart</a>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer; text-decoration:underline;">Log out</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div th:if="${param.added}" class="notification-banner">
+            <div class="notification-content">
+                <span class="notification-message">✓ Product added to cart successfully!</span>
+                <div class="notification-actions">
+                    <a th:href="@{/cart}" class="btn-primary">Go to Cart</a>
+                    <button class="btn-close" onclick="this.parentElement.parentElement.parentElement.style.display='none';">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${param.success}" class="notification-banner" style="background: #dff0d8; border-color: #c6e9b5;">
+            <div class="notification-content">
+                <span class="notification-message" style="color: #3d763d;">✓ Product added successfully!</span>
+                <button class="btn-close" style="color: #3d763d;" onclick="this.parentElement.parentElement.parentElement.style.display='none';">Dismiss</button>
+            </div>
+        </div>
+
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h1>Products</h1>
+            <a th:href="@{/products/add}" class="add-product-btn">+ Add Product</a>
+        </div>
+        <div class="product-grid">
+            <div class="card" th:each="product : ${products}">
+                <img th:src="${product.imageUrl}" th:alt="${product.name}">
+                <h3 th:text="${product.name}"></h3>
+                <p th:text="${product.description}"></p>
+                <div class="price" th:text="'$' + ${product.price}"></div>
+                <form th:action="@{'/cart/add/' + ${product.id}}" method="post">
+                    <input type="hidden" name="quantity" value="1">
+                    <button class="add-btn" type="submit">Add to cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

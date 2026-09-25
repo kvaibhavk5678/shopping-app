@@ -1,0 +1,15 @@
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\config\DataInitializer.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\config\SecurityConfig.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\controller\AuthController.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\controller\CartController.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\controller\ProductApiController.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\controller\ProductController.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\entity\CartItem.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\entity\Product.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\entity\User.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\repository\CartItemRepository.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\repository\ProductRepository.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\repository\UserRepository.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\service\CartService.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\service\CustomUserDetailsService.java
+C:\Users\KARTIK\Downloads\shopping-app\shopping-app\src\main\java\com\example\shopapp\ShopAppApplication.java

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in - ShopApp</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav>
+        <span class="brand">ShopApp</span>
+    </nav>
+
+    <div class="auth-box">
+        <h1>Log in</h1>
+        <form th:action="@{/login}" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autofocus>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button class="btn" type="submit">Log in</button>
+        </form>
+
+        <p class="error" th:if="${param.error}">Invalid username or password.</p>
+        <p class="success" th:if="${param.logout}">You have been logged out.</p>
+        <p class="success" th:if="${param.registered}">Account created — please log in.</p>
+
+        <a class="muted-link" th:href="@{/signup}">New here? Create an account</a>
+    </div>
+</body>
+</html>
